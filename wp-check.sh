@@ -21,10 +21,10 @@ function CHECKSUMCORE {
 DLPATH=/tmp/
 
 # Downloads WP-CLI - http://wp-cli.org/
-curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --output ${DLPATH}wp-cli.phar
+curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --output ${DLPATH}wp-cli.phar &>/dev/null
 
 # Checks to see if it is present and shows its version
-php ${DLPATH}wp-cli.phar --info
+# php ${DLPATH}wp-cli.phar --info
 
 # Checks the checksums of your WordPress website against what they should be
 php ${DLPATH}wp-cli.phar core verify-checksums
