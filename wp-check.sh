@@ -38,7 +38,9 @@ read -p "Enter the full path of the WordPress site you wish to check: " SITEPATH
 
 cd $SITEPATH
 
-echo -e "Checking number of installed Plugins... \c"
+echo && echo -e "Checking number of installed Plugins... \c"
 find ./wp-content/plugins/ -maxdepth 1 -type d | wc -l
+echo
 
+echo "Testing the checksums of the WordPress Core files..."
 CHECKSUMCORE
