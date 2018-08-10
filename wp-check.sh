@@ -15,7 +15,6 @@ then
 	exit 1
 fi
 
-
 function CHECKSUMCORE {
 
 DLPATH=/tmp/
@@ -31,6 +30,11 @@ php ${DLPATH}wp-cli.phar core verify-checksums
 
 # Removes WP-CLI from the system after work is done
 rm -f ${DLPATH}wp-cli.phar
+}
+
+function PAUSEANDPROMPT {
+
+echo && read -p "Press [Enter] to proceed..."
 
 }
 
@@ -44,20 +48,26 @@ php ${DLPATH}wp-cli.phar option list --search=siteurl
 
 echo && echo "Comparing the version of this WordPress website with the latest..." && sleep 2
 php ${DLPATH}wp-cli.phar core check-update
-echo && read -p "Press [Enter] to proceed..."
+PAUSEANDPROMPT
 
 echo && echo -e "Checking number of installed Plugins and their status... \c"
 php ${DLPATH} wp-cli.phar plugin status
-echo && read -p "Press [Enter] to proceed..."
+PAUSEANDPROMPT
+
+echo && echo -e "Checking installed Themes... \c"
+php ${DLPATH} theme status
+PAUSEANDPROMPT
 
 echo && echo "Listing active Plugins..."
 php ${DLPATH}wp-cli.phar plugin list --status=active
-echo && read -p "Press [Enter] to proceed..."
+PAUSEANDPROMPT
 
 echo && echo "Listing inactive Plugins..."
 php ${DLPATH}wp-cli.phar plugin list --status=inactive
-echo && read -p "Press [Enter] to proceed..."
+PAUSEANDPROMPT
 
 echo "Testing the checksums of the WordPress Core files..."
 CHECKSUMCORE
-echo && read -p "Press [Enter] to proceed..."
+PAUSEANDPROMPT
+
+exit 0
