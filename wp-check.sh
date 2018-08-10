@@ -38,6 +38,10 @@ read -p "Enter the full path of the WordPress site you wish to check: " SITEPATH
 
 cd $SITEPATH
 
+echo && echo "Website selected..."
+php ${DLPATH}wp-cli.phar option list --search=siteurl
+
+
 echo && echo "Comparing the version of this WordPress website with the latest..." && sleep 2
 php ${DLPATH}wp-cli.phar core check-update
 
