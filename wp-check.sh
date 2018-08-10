@@ -50,5 +50,11 @@ echo && echo -e "Checking number of installed Plugins... \c"
 find ./wp-content/plugins/ -maxdepth 1 -type d | wc -l
 echo
 
+echo && echo "Listing active Plugins..."
+php ${DLPATH}wp-cli.phar plugin list --status=active
+
+echo && echo "Listing inactive Plugins..."
+php ${DLPATH}wp-cli.phar plugin list --status=inactive
+
 echo "Testing the checksums of the WordPress Core files..."
 CHECKSUMCORE
