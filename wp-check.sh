@@ -5,7 +5,7 @@
 # Notes - ideas to implement in the future:
 # - Show number of installed Plugins
 # - Show any files or folders with 777 permissions
-# 
+# - Check WP version with: php wp-cli.phar core check-update
 
 
 # Test to see if the user is root (we don't want them to be root)
@@ -37,6 +37,10 @@ rm -f ${DLPATH}wp-cli.phar
 read -p "Enter the full path of the WordPress site you wish to check: " SITEPATH
 
 cd $SITEPATH
+
+echo && echo "Comparing the version of this WordPress website with the latest..." && sleep 2
+php ${DLPATH}wp-cli.phar core check-update
+
 
 echo && echo -e "Checking number of installed Plugins... \c"
 find ./wp-content/plugins/ -maxdepth 1 -type d | wc -l
