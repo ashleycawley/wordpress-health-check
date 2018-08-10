@@ -28,13 +28,11 @@ curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -
 # Checks the checksums of your WordPress website against what they should be
 php ${DLPATH}wp-cli.phar core verify-checksums
 
-# Removes WP-CLI from the system after work is done
-rm -f ${DLPATH}wp-cli.phar
 }
 
 function PAUSEANDPROMPT {
 
-echo && read -p "Press [Enter] to proceed..."
+echo && read -p "Press [Enter] to proceed..." && echo
 
 }
 
@@ -71,7 +69,7 @@ CHECKSUMCORE
 PAUSEANDPROMPT
 
 echo "Listing Administrators..."
-php ${DLPATH} wp-cli.phar user list --role=administrator
+php ${DLPATH}wp-cli.phar user list --role=administrator
 PAUSEANDPROMPT
 
 exit 0
