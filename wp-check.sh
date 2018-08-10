@@ -46,9 +46,9 @@ echo && echo "Comparing the version of this WordPress website with the latest...
 php ${DLPATH}wp-cli.phar core check-update
 
 
-echo && echo -e "Checking number of installed Plugins... \c"
-find ./wp-content/plugins/ -maxdepth 1 -type d | wc -l
-echo
+echo && echo -e "Checking number of installed Plugins and their status... \c"
+php ${DLPATH} wp-cli.phar plugin status
+
 
 echo && echo "Listing active Plugins..."
 php ${DLPATH}wp-cli.phar plugin list --status=active
