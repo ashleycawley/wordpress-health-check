@@ -54,20 +54,24 @@ echo && echo -e "Checking number of installed Plugins and their status... \c"
 php ${DLPATH} wp-cli.phar plugin status
 PAUSEANDPROMPT
 
-echo && echo -e "Checking installed Themes... \c"
+echo && echo -e "Checking installed Themes and their status... \c"
 php ${DLPATH} theme status
 PAUSEANDPROMPT
 
-echo && echo "Listing active Plugins..."
-php ${DLPATH}wp-cli.phar plugin list --status=active
-PAUSEANDPROMPT
+# echo && echo "Listing active Plugins..."
+# php ${DLPATH}wp-cli.phar plugin list --status=active
+# PAUSEANDPROMPT
 
-echo && echo "Listing inactive Plugins..."
-php ${DLPATH}wp-cli.phar plugin list --status=inactive
-PAUSEANDPROMPT
+# echo && echo "Listing inactive Plugins..."
+# php ${DLPATH}wp-cli.phar plugin list --status=inactive
+# PAUSEANDPROMPT
 
 echo "Testing the checksums of the WordPress Core files..."
 CHECKSUMCORE
+PAUSEANDPROMPT
+
+echo "Listing Administrators..."
+php ${DLPATH} wp-cli.phar user list --role=administrator
 PAUSEANDPROMPT
 
 exit 0
