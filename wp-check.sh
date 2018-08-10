@@ -51,11 +51,11 @@ php ${DLPATH}wp-cli.phar core check-update
 PAUSEANDPROMPT
 
 echo && echo -e "Checking number of installed Plugins and their status... \c"
-php ${DLPATH} wp-cli.phar plugin status
+php ${DLPATH}wp-cli.phar plugin status
 PAUSEANDPROMPT
 
 echo && echo -e "Checking installed Themes and their status... \c"
-php ${DLPATH} theme status
+php ${DLPATH}wp-cli.phar theme status
 PAUSEANDPROMPT
 
 # echo && echo "Listing active Plugins..."
